@@ -228,7 +228,7 @@ mostrarReglas()
 mostrarInicial()
 rankings = lecturaArchivo()
 eleccion = verificarEleccion()
-
+print(eleccion)
 print(eleccion)
 while eleccion != 3:
     if eleccion == 1:
