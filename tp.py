@@ -98,12 +98,21 @@ def verificarEleccion():
     return int(eleccion)
 
 def mostrarArco(a):
-    print(" _ " * len(a[0]))
+    lista = []
+    k = 0
+    for i in range(len(a[0])):
+        lista.append(i)
+        lista.append("")
+    print("   ", *lista,)
+    print("  ", " - " * len(a[0]))
     for f in a:
+        print(k, end=" ")
         print("|", end="")
+        k += 1
         for c in f:
             print(f" {c} ", end="")
         print("|")
+
 
 def generarArco():
     f = 4 
@@ -142,7 +151,6 @@ def ingresarArquero(f, c, arco, arquero):
             c += 1
         f += 1
         c -= k + 1
-
 
 def coordenadasArquero(arco, arquero, coordenadas):
     if len(coordenadas) == 0:
@@ -228,36 +236,37 @@ arquero = [["x", "x"],["x", "x"]]
 arco = generarArco()
 mostrarReglas()
 mostrarInicial()
+mostrarArco(arco)
 rankings = lecturaArchivo()
 eleccion = verificarEleccion()
-while eleccion != 4:
-    if eleccion == 1:
-        # Codigo de la maquina vs el jugador
-        jugador = input("> Ingrese su nombre : ")
-        tabla = []
-        coordenadas = dict()
-        puntaje = jugar(jugador, tabla, arco, arquero, coordenadas)
-        print(f"\n > Su puntaje actual es : {puntaje}")
-        sumarPuntaje(jugador, puntaje, rankings)
+# while eleccion != 4:
+#     if eleccion == 1:
+#         # Codigo de la maquina vs el jugador
+#         jugador = input("> Ingrese su nombre : ")
+#         tabla = []
+#         coordenadas = dict()
+#         puntaje = jugar(jugador, tabla, arco, arquero, coordenadas)
+#         print(f"\n > Su puntaje actual es : {puntaje}")
+#         sumarPuntaje(jugador, puntaje, rankings)
 
-    elif eleccion == 2:
-        # Codigo de jugador vs jugador
-        # jugador1 = input("> Ingrese su nombre : ")
-        # jugador2 = input("> Ingrese su nombre : ")
-        # tabla1 = []
-        # tabla2 = []
-        # coordenadas1 = dict()
-        # coordenadas2 = dict()
-        pass
+#     elif eleccion == 2:
+#         # Codigo de jugador vs jugador
+#         # jugador1 = input("> Ingrese su nombre : ")
+#         # jugador2 = input("> Ingrese su nombre : ")
+#         # tabla1 = []
+#         # tabla2 = []
+#         # coordenadas1 = dict()
+#         # coordenadas2 = dict()
+#         pass
 
 
-    elif eleccion == 3:
-        mostrarRanking(rankings)
+#     elif eleccion == 3:
+#         mostrarRanking(rankings)
 
-    ordenarDiccionario(rankings)
-    arquero = [["x", "x"],["x", "x"]]
-    mostrarInicial()
-    eleccion = verificarEleccion()
+#     ordenarDiccionario(rankings)
+#     arquero = [["x", "x"],["x", "x"]]
+#     mostrarInicial()
+#     eleccion = verificarEleccion()
 
 escrituraArchivo(rankings)
 
