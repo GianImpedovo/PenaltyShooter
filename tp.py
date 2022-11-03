@@ -1,11 +1,3 @@
-'''
-ERRORES :
-
-- En el segundo nivel se divide el arquero []
-- Validacion de ingresar un dato vacio []
-
-'''
-
 # imports
 import random
 
@@ -86,15 +78,14 @@ su tamaño generando más dificultad para el jugador. \
 def mostrarInicial():
     print()
     print("1. Jugador vs la maquina ")
-    print("2. Jugador vs Jugador ")
-    print("3. Mostrar Ranking")
-    print("4. Salir")
+    print("2. Mostrar Ranking")
+    print("3. Salir")
 
 def verificarEleccion():
     eleccion = input("\n> Ingrese que desea jugar : ")
-    while eleccion != "1" and eleccion != "2" and eleccion != "3" and eleccion != "4":
+    if eleccion != "1" and eleccion != "2" and eleccion != "3":
         print("\n INGRESASTE UNA ELECCION INVALIDA \n")
-        eleccion = input("\n> Ingrese que desea jugar : ")
+        eleccion = verificarEleccion()
     return int(eleccion)
 
 def mostrarArco(a):
@@ -112,7 +103,6 @@ def mostrarArco(a):
         for c in f:
             print(f" {c} ", end="")
         print("|")
-
 
 def generarArco():
     f = 4 
@@ -236,37 +226,27 @@ arquero = [["x", "x"],["x", "x"]]
 arco = generarArco()
 mostrarReglas()
 mostrarInicial()
-mostrarArco(arco)
 rankings = lecturaArchivo()
 eleccion = verificarEleccion()
-# while eleccion != 4:
-#     if eleccion == 1:
-#         # Codigo de la maquina vs el jugador
-#         jugador = input("> Ingrese su nombre : ")
-#         tabla = []
-#         coordenadas = dict()
-#         puntaje = jugar(jugador, tabla, arco, arquero, coordenadas)
-#         print(f"\n > Su puntaje actual es : {puntaje}")
-#         sumarPuntaje(jugador, puntaje, rankings)
 
-#     elif eleccion == 2:
-#         # Codigo de jugador vs jugador
-#         # jugador1 = input("> Ingrese su nombre : ")
-#         # jugador2 = input("> Ingrese su nombre : ")
-#         # tabla1 = []
-#         # tabla2 = []
-#         # coordenadas1 = dict()
-#         # coordenadas2 = dict()
-#         pass
+print(eleccion)
+while eleccion != 3:
+    if eleccion == 1:
+        # Codigo de la maquina vs el jugador
+        jugador = input("> Ingrese su nombre : ")
+        tabla = []
+        coordenadas = dict()
+        puntaje = jugar(jugador, tabla, arco, arquero, coordenadas)
+        print(f"\n > Su puntaje actual es : {puntaje}")
+        sumarPuntaje(jugador, puntaje, rankings)
+   
+    elif eleccion == 2:
+        mostrarRanking(rankings)
 
-
-#     elif eleccion == 3:
-#         mostrarRanking(rankings)
-
-#     ordenarDiccionario(rankings)
-#     arquero = [["x", "x"],["x", "x"]]
-#     mostrarInicial()
-#     eleccion = verificarEleccion()
+    ordenarDiccionario(rankings)
+    arquero = [["x", "x"],["x", "x"]]
+    mostrarInicial()
+    eleccion = verificarEleccion()
 
 escrituraArchivo(rankings)
 
