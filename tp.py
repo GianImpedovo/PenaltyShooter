@@ -1,5 +1,6 @@
 # imports
 import random
+from colorama import Fore, Back
 
 # Funciones
 def lecturaArchivo():
@@ -28,9 +29,7 @@ def lecturaArchivo():
 def escrituraArchivo(rankings):
     try:
         archivo = open("rankings.csv", "wt")
-        k = 0
         for jugador, puntaje in rankings.items():
-            k += 1
             linea = f"{jugador};{str(puntaje)}\n"
             archivo.write(linea)
     except FileNotFoundError as mensaje:
@@ -38,7 +37,7 @@ def escrituraArchivo(rankings):
     except OSError as mensaje:
         print(" ERROR : " , mensaje)
     else:
-        print(" Copia finalizada, Lineas copiadas", k)
+        print("\n Se ha guardado su puntaje exitosamente. ")
     finally:
         try:
             archivo.close()
@@ -246,6 +245,7 @@ while eleccion != 3:
     mostrarInicial()
     eleccion = verificarEleccion()
 
+print("\n GRACIAS POR JUGAR \n")
 escrituraArchivo(rankings)
 
 
