@@ -3,7 +3,6 @@ ERRORES :
 
 - En el segundo nivel se divide el arquero []
 - Validacion de ingresar un dato vacio []
-voy a hacer un pull
 
 '''
 
